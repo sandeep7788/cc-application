@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:black="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/signin_round_shape"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar_with_back_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ScrollView
+            android:id="@+id/nestedScrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/signin_round_shape"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="1dp"
+                    black:tint="#ff858585">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_profile"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/circul_white"
+                        android:backgroundTint="@color/white"
+                        android:elevation="2dp"
+                        android:src="@drawable/add_profile"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/circul_white"
+                        android:backgroundTint="#AED6F1"
+                        android:elevation="1dp"
+                        android:scaleType="centerInside"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="@drawable/circul_white"
+                        android:backgroundTint="@color/theme_color"
+                        android:scaleType="centerInside"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circuler_shape"
+                        android:backgroundTint="@color/theme_color"
+                        android:elevation="4dp"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:tint="@color/white" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Email Address"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:orientation="horizontal"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <EditText
+                        android:id="@+id/edt_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="36dp"
+                        android:backgroundTint="@color/button_bg"
+                        android:fontFamily="@font/intel"
+                        android:hint="Enter your email address"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/txt_hint"
+                        android:textSize="@dimen/text_nev"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Password"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:orientation="horizontal"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <EditText
+                        android:id="@+id/edt_Password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="36dp"
+                        android:backgroundTint="@color/button_bg"
+                        android:fontFamily="@font/intel"
+                        android:hint="Enter password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/txt_hint"
+                        android:textSize="@dimen/text_nev"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Conform Password"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:orientation="horizontal"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <EditText
+                        android:id="@+id/edt_confirmPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="36dp"
+                        android:backgroundTint="@color/button_bg"
+                        android:fontFamily="@font/intel"
+                        android:hint="Conform Your password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/txt_hint"
+                        android:textSize="@dimen/text_nev"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/intel"
+                        android:foregroundGravity="center|left"
+                        android:gravity="center|left"
+                        android:text="First Name"
+                        android:textColor="@color/nev_item_color"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/intel"
+                        android:foregroundGravity="center|left"
+                        android:gravity="center|left"
+                        android:text=" Last Name"
+                        android:textColor="@color/nev_item_color"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edt_pincode"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_txtbg"
+                        android:foregroundGravity="center"
+                        android:gravity="center|left"
+                        android:hint="First name"
+                        android:inputType="textPersonName"
+                        android:paddingStart="16dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev" />
+
+                    <EditText
+                        android:id="@+id/txtcity"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_txtbg"
+                        android:foregroundGravity="center"
+                        android:gravity="center|left"
+                        android:hint="last name"
+                        android:inputType="textPersonName"
+                        android:paddingStart="8dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Phone No."
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="14dp"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp">
+
+                    <EditText
+                        android:id="@+id/edt_number_code"
+                        android:layout_width="55dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/edit_txtbg"
+                        android:clickable="true"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:fontFamily="@font/intel"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:text="+91"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/edt_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="67dp"
+                        android:background="@drawable/edit_txtbg"
+                        android:clickable="true"
+                        android:fontFamily="@font/intel"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:paddingStart="15dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/txt_hint"
+                        android:textSize="@dimen/text_nev"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/edt_number_code"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/intel"
+                        android:foregroundGravity="center|left"
+                        android:gravity="center|left"
+                        android:text="Blood Group"
+                        android:textColor="@color/nev_item_color"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/intel"
+                        android:foregroundGravity="center|left"
+                        android:gravity="center|left"
+                        android:text="Gender"
+                        android:textColor="@color/nev_item_color"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:weightSum="2">
+
+                    <Spinner
+                        android:id="@+id/edt_bloodGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_txtbg"
+                        android:foregroundGravity="center"
+                        android:gravity="center|left"
+                        android:paddingStart="16dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev" />
+
+                    <Spinner
+                        android:id="@+id/spinnerGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_txtbg"
+                        android:foregroundGravity="center"
+                        android:gravity="center|left"
+                        android:paddingStart="8dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/intel"
+                        android:foregroundGravity="center|left"
+                        android:gravity="center|left"
+                        android:text="City"
+                        android:textColor="@color/nev_item_color"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/intel"
+                        android:foregroundGravity="center|left"
+                        android:gravity="center|left"
+                        android:text="Country"
+                        android:textColor="@color/nev_item_color"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edtCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_txtbg"
+                        android:foregroundGravity="center"
+                        android:gravity="center|left"
+                        android:hint="City"
+                        android:inputType="textPostalAddress"
+                        android:paddingStart="16dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev" />
+
+                    <EditText
+                        android:id="@+id/edtCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|left"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_txtbg"
+                        android:foregroundGravity="center"
+                        android:gravity="center|left"
+                        android:hint="Country"
+                        android:inputType="textPostalAddress"
+                        android:paddingStart="8dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Pincode"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:clickable="true"
+                    android:fontFamily="@font/intel"
+                    android:hint="Enter postal code"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:padding="12dp"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/txt_hint"
+                    android:textSize="@dimen/text_nev"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Address"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:clickable="true"
+                    android:fontFamily="@font/intel"
+                    android:hint="Enter address"
+                    android:inputType="textPostalAddress"
+                    android:minLines="3"
+                    android:padding="12dp"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/txt_hint"
+                    android:textSize="@dimen/text_nev"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="45dp"
+                    android:background="@drawable/round_corner_shape"
+                    android:backgroundTint="@color/theme_color"
+                    android:text="Create"
+                    android:textColor="@color/button_bg" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/intel"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:singleLine="true"
+                    android:text="Already a member?"
+                    android:textColor="@color/gray_btn_bg_color"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="@dimen/txt_15sp"
+                    android:fontFamily="@font/intel"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:singleLine="true"
+                    android:text="Sign In"
+                    android:textColor="@color/theme_color"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

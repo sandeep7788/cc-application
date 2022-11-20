@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/itemHome"
+            android:checked="false"
+            android:icon="@drawable/home_icon"
+            android:title="HOME" />
+        <item
+            android:id="@+id/itemAboutUs"
+            android:checked="false"
+            android:icon="@drawable/aboutus_icon"
+            android:title="ABOUT US" />
+        <item
+            android:id="@+id/itemServices"
+            android:checked="true"
+            android:icon="@drawable/services_icon"
+            android:title="SERVICES" />
+
+        <item
+            android:id="@+id/item_doctor"
+            android:checked="false"
+            android:icon="@drawable/doctor_icon"
+            android:title="DOCTORS" />
+
+
+        <item
+            android:id="@+id/itemAppointment"
+            android:checked="false"
+            android:icon="@drawable/appointment_icon"
+            android:title="APPOINTMENTS" />
+    </group>
+</menu>
