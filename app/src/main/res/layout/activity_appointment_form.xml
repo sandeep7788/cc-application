@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/signin_round_shape"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar_with_back_btn"
+            app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ScrollView
+            android:id="@+id/nestedScrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/signin_round_shape"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Date of Birth"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/edtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:clickable="true"
+                    android:drawableRight="@drawable/calendr_icon"
+                    android:fontFamily="@font/intel"
+                    android:hint="DD/MM/YYYY"
+                    android:inputType="textPostalAddress"
+                    android:minLines="3"
+                    android:padding="12dp"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/txt_hint"
+                    android:textSize="@dimen/text_nev"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Clinic"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                <Spinner
+                    android:id="@+id/spinnerClinic"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_txtbg"
+                    android:foregroundGravity="center"
+                    android:gravity="center|left"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_nev" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Doctor"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Spinner
+        android:id="@+id/spinnerDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center|left"
+        android:layout_weight="1"
+        android:background="@drawable/edit_txtbg"
+        android:foregroundGravity="center"
+        android:gravity="center|left"
+        android:paddingStart="4dp"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_nev"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBarDoctor"
+        android:visibility="gone"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="16dp"
+        android:progressTint="@color/them_dark_color"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerDoctor"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerDoctor"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/spinnerDoctor"
+        app:layout_constraintTop_toTopOf="@+id/spinnerDoctor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Service"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerService"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="4dp"
+                    tools:itemCount="2"
+                    android:scrollbarSize="2dp"
+                    tools:listitem="@layout/adapter_checkbox"
+                    android:layout_gravity="center|left"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_txtbg"
+                    android:foregroundGravity="center"
+                    android:gravity="center|left"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_nev" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Time Slot"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Spinner
+                        android:id="@+id/spinnerTimeSlot"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|left"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_txtbg"
+                        android:foregroundGravity="center"
+                        android:gravity="center|left"
+                        android:paddingStart="4dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_nev"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarTimeSlot"
+                        android:visibility="gone"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginEnd="16dp"
+                        android:progressTint="@color/them_dark_color"
+                        app:layout_constraintBottom_toBottomOf="@+id/spinnerTimeSlot"
+                        app:layout_constraintEnd_toEndOf="@+id/spinnerTimeSlot"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/spinnerTimeSlot"
+                        app:layout_constraintTop_toTopOf="@+id/spinnerTimeSlot" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Make Note (Optional message)"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:clickable="true"
+                    android:fontFamily="@font/intel"
+                    android:hint="Make Note"
+                    android:gravity="start"
+                    android:minLines="3"
+                    android:padding="12dp"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/txt_hint"
+                    android:textSize="@dimen/text_nev"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="45dp"
+                    android:background="@drawable/round_corner_shape"
+                    android:backgroundTint="@color/theme_color"
+                    android:text="BOOK APPOINTMENT"
+                    android:textColor="@color/button_bg" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

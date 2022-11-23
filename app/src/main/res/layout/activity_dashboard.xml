@@ -22,6 +22,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
+                android:elevation="4dp"
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +46,8 @@
 
                 <Button
                     android:id="@+id/newAppointment"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
+                    android:minWidth="150dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="16dp"
@@ -53,9 +55,8 @@
                     android:backgroundTint="@color/orange"
                     android:drawableLeft="@drawable/book_icon"
                     android:padding="8dp"
-                    android:text="Book Appointment"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/txt_10sp"
+                    android:textSize="12dp"
                     android:tint="@color/orange"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="75dp"
                 android:layout_marginBottom="72dp"
-                android:background="@color/background"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

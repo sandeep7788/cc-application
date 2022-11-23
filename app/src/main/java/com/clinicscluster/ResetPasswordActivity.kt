@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.clinicscluster.databinding.ActivityResetBinding
 import com.clinicscluster.databinding.ActivitySignInBinding
+import com.clinicscluster.helper.Utility
 
 class ResetPasswordActivity : AppCompatActivity() {
     lateinit var binding: ActivityResetBinding
@@ -21,8 +22,9 @@ class ResetPasswordActivity : AppCompatActivity() {
 
     fun onClick() {
         binding.btnSubmit.setOnClickListener {
-            val mIntent = Intent(this@ResetPasswordActivity, SignInActivity::class.java)
-            startActivity(mIntent)
+//            val mIntent = Intent(this@ResetPasswordActivity, SignInActivity::class.java)
+//            startActivity(mIntent)
+            Utility.showSnackBar(this@ResetPasswordActivity, "Please try later.")
         }
         binding.btnSignIn.setOnClickListener {
             val mIntent = Intent(this@ResetPasswordActivity, SignInActivity::class.java)

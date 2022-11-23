@@ -64,7 +64,6 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/circul_white"
-                        android:backgroundTint="@color/white"
                         android:elevation="2dp"
                         android:src="@drawable/add_profile"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +141,7 @@
                     android:paddingBottom="4dp">
 
                     <EditText
-                        android:id="@+id/edt_name"
+                        android:id="@+id/edtEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -308,7 +307,7 @@
                     android:weightSum="2">
 
                     <EditText
-                        android:id="@+id/edt_pincode"
+                        android:id="@+id/edt_fNam"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="center|left"
@@ -327,7 +326,7 @@
                         android:textSize="@dimen/text_nev" />
 
                     <EditText
-                        android:id="@+id/txtcity"
+                        android:id="@+id/txtlName"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="center|left"
@@ -394,7 +393,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/edt_number"
+                        android:id="@+id/edtPhone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="67dp"
@@ -415,6 +414,68 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Date of Birth"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/edtDob"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_txtbg"
+                    android:clickable="true"
+                    android:fontFamily="@font/intel"
+                    android:hint="DD/MM/YYYY"
+                    android:inputType="textPostalAddress"
+                    android:minLines="3"
+                    android:padding="12dp"
+                    android:drawableRight="@drawable/calendr_icon"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/txt_hint"
+                    android:textSize="@dimen/text_nev"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/intel"
+                    android:foregroundGravity="center"
+                    android:text="Clinic"
+                    android:textColor="@color/nev_item_color"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                <Spinner
+                    android:id="@+id/spinnerClinic"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_txtbg"
+                    android:foregroundGravity="center"
+                    android:gravity="center|left"
+                    android:paddingStart="4dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_nev" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -604,12 +665,13 @@
                     android:layout_marginTop="14dp"
                     android:fontFamily="@font/intel"
                     android:foregroundGravity="center"
-                    android:text="Pincode"
+                    android:text="Postal Code"
                     android:textColor="@color/nev_item_color"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/edtPostCode"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="6dp"
@@ -643,14 +705,15 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/edtAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/edit_txtbg"
                     android:clickable="true"
                     android:fontFamily="@font/intel"
                     android:hint="Enter address"
-                    android:inputType="textPostalAddress"
+                    android:gravity="start"
                     android:minLines="3"
                     android:padding="12dp"
                     android:paddingStart="16dp"
