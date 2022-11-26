@@ -9,7 +9,7 @@ import android.net.ConnectivityManager
 import android.util.Base64
 import android.util.Log
 import com.clinicscluster.SharedPrefData
-import com.clinicscluster.SplashScreen
+import com.clinicscluster.activity.SplashScreen
 import com.clinicscluster.model.UserModel
 import com.google.gson.Gson
 import java.security.MessageDigest

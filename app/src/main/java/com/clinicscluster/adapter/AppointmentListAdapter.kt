@@ -50,10 +50,17 @@ class AppointmentListAdapter(
 
             if (option.status == 0) {
                 holder.binding.txtStatus.text = "Booked/Upcoming"
+            } else if (option.status == 1) {
+                holder.binding.txtStatus.text = "Completed"
+            } else if (option.status == 2) {
+                holder.binding.txtStatus.text = "Cancelled"
+            } else if (option.status == 3) {
+                holder.binding.txtStatus.text = "Check Out"
+            } else if (option.status == 4) {
+                holder.binding.txtStatus.text = "Check In"
             } else {
-                holder.binding.txtStatus.text = "Recent"
+                holder.binding.txtStatus.text = "UnKnown"
             }
-
 
         } catch (e: Exception) {
             Toast.makeText(context, " " + e.message.toString(), Toast.LENGTH_LONG)

@@ -25,7 +25,7 @@
 
 
         <item
-            android:id="@+id/itemAppointment"
+            android:id="@+id/item_appointment"
             android:checked="false"
             android:icon="@drawable/appointment_icon"
             android:title="APPOINTMENTS" />

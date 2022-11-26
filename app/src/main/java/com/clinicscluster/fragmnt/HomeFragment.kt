@@ -1,6 +1,5 @@
-package com.clinicscluster.dashboard
+package com.clinicscluster.fragmnt
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -16,18 +15,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.clinicscluster.R
-import com.clinicscluster.adapter.DoctorDashBoardListAdapter
-import com.clinicscluster.adapter.ReviewAdapter
-import com.clinicscluster.adapter.ServiceDashBoardListAdapter
-import com.clinicscluster.adapter.ViewPagerAdapter
+import com.clinicscluster.adapter.*
 import com.clinicscluster.databinding.FragmentHomeBinding
 import com.clinicscluster.helper.ApiInterface
 import com.clinicscluster.helper.RetrofitManager
 import com.clinicscluster.helper.Utility
-import com.clinicscluster.model.dashboard.DashboardModel
-import com.clinicscluster.model.dashboard.Doctor
-import com.clinicscluster.model.dashboard.Review
-import com.clinicscluster.model.dashboard.Service
+import com.clinicscluster.model.dashboard.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,9 +30,9 @@ import java.util.*
 class HomeFragment : Fragment() {
 
     var listDoctor: ArrayList<Doctor> = ArrayList()
-    var listBanner: ArrayList<String> = ArrayList()
+    var listAbout: ArrayList<AboutUsListHomeModel> = ArrayList()
+    var listBanner: ArrayList<Slider> = ArrayList()
     var listReview: ArrayList<Review> = ArrayList()
-    var linearLayoutManager: LinearLayoutManager? = null
     lateinit var binding: FragmentHomeBinding
     lateinit var thiscontext: Context
     var mViewPagerAdapter: ViewPagerAdapter? = null
@@ -49,6 +42,7 @@ class HomeFragment : Fragment() {
     var listService: ArrayList<Service> = ArrayList()
     var adapterService: ServiceDashBoardListAdapter? = null
     var adapterDoctor: DoctorDashBoardListAdapter? = null
+    var adapterAbout: AboutDashBoardListAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
@@ -61,15 +55,14 @@ class HomeFragment : Fragment() {
         progressDialog!!.progressHelper.barColor = R.color.theme_color
         progressDialog!!.titleText = "Loading ..."
         progressDialog!!.setCancelable(false)
-        set_ClickListener()
+        setClickListener()
 
         init()
 
         return binding.root
     }
 
-    @SuppressLint("WrongConstant")
-    fun set_ClickListener() {
+    fun setClickListener() {
 
     }
 
@@ -77,6 +70,7 @@ class HomeFragment : Fragment() {
 
         setServiceList()
         setDoctorList()
+        setAboutList()
         setBanner()
         setReview()
         getData()
@@ -99,6 +93,17 @@ class HomeFragment : Fragment() {
         binding.recyclerDoctor.itemAnimator = DefaultItemAnimator()
         adapterDoctor = DoctorDashBoardListAdapter(listDoctor, thiscontext)
         binding.recyclerDoctor.adapter = adapterDoctor
+    }
+
+    fun setAboutList() {
+
+        var linearLayoutManager: LinearLayoutManager? =
+            LinearLayoutManager(thiscontext, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerAbout.layoutManager = linearLayoutManager
+        binding.recyclerAbout.itemAnimator = DefaultItemAnimator()
+        adapterAbout = AboutDashBoardListAdapter(listAbout, thiscontext)
+        binding.recyclerAbout.adapter = adapterAbout
+
     }
 
     var currentPage = 0
@@ -181,16 +186,19 @@ class HomeFragment : Fragment() {
                             listService.addAll(data.services)
                             listDoctor.addAll(data.doctors)
                             listReview.addAll(data.reviews)
-                            listBanner.add(data.banner.homepage)
-                            listBanner.add(data.banner.aboutpage)
-                            listBanner.add(data.banner.servicedetail)
-                            listBanner.add(data.banner.doctorpage)
-                            listBanner.add(data.banner.contactpage)
-                            listBanner.add(data.banner.contactpagemain)
-                            listBanner.add(data.banner.loginpage)
+                            listBanner.addAll(data.sliders)
+
+                            for (i in 0 until data.siteSettings.size) {
+                                if (data.siteSettings.get(i)._key.equals("site_contact_number",true)||
+                                data.siteSettings.get(i)._key.equals("site_address",true)||
+                                data.siteSettings.get(i)._key.equals("site_clock",true)) {
+                                    listAbout.add(data.siteSettings.get(i))
+                                }
+                            }
 
                             adapterDoctor?.notifyDataSetChanged()
                             adapterService?.notifyDataSetChanged()
+                            adapterAbout?.notifyDataSetChanged()
                             mViewPagerAdapter?.notifyDataSetChanged()
                             mReviewAdapter?.notifyDataSetChanged()
 

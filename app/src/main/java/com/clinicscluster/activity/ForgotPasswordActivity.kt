@@ -1,7 +1,8 @@
-package com.clinicscluster
+package com.clinicscluster.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +10,8 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.clinicscluster.R
 import com.clinicscluster.databinding.ActivityForgotBinding
-import com.clinicscluster.databinding.ActivitySignInBinding
 import com.clinicscluster.helper.*
 import com.google.gson.JsonObject
 import org.json.JSONObject
@@ -39,7 +40,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
     fun onClick() {
         binding.btnSignIn.setOnClickListener {
-            val mIntent = Intent(this@ForgotPasswordActivity,SignInActivity::class.java)
+            val mIntent = Intent(this@ForgotPasswordActivity, SignInActivity::class.java)
             startActivity(mIntent)
         }
         binding.btnSend.setOnClickListener {
@@ -77,17 +78,17 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
                         Log.d(TAG, "onResponse: " + response.body().toString())
                         val json: JSONObject = JSONObject(response.body().toString())
-                        if (json.getString("message") != null){
-                            Utility.showSnackBar(mContext,json.getString("message"))
-                        }
+//                        if (json.getString("message") != null){
+//                            Utility.showSnackBar(mContext,json.getString("message"))
+//                        }
 
                         if (json.getBoolean("status") != null && json.getBoolean("status")) {
 
 //                            val obj: UserModel = Gson().fromJson(json.getJSONObject("user").toString(), UserModel::class.java)
 
-                            val mIntent = Intent(this@ForgotPasswordActivity,ResetPasswordActivity::class.java)
-                            startActivity(mIntent)
-                            finish()
+                            showDialog(json.getString("message"))
+
+
                         } else {
                             Utility.showDialog(
                                 mContext,
@@ -105,6 +106,21 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
 
         })
+    }
+    private fun showDialog(msg:String) {
+        val pDialog =
+            SweetAlertDialog(mContext, SweetAlertDialog.SUCCESS_TYPE)
+        pDialog.titleText = msg
+        pDialog.confirmText = "OK"
+        pDialog.progressHelper.barColor = Color.parseColor("#FFE8560D")
+        pDialog.setCancelable(false)
+        pDialog.setConfirmClickListener {
+            pDialog.dismiss()
+            val mIntent = Intent(this@ForgotPasswordActivity, SignInActivity::class.java)
+            startActivity(mIntent)
+            finish()
+        }
+        pDialog.show()
     }
 
 }

@@ -9,8 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/button_bg"
-        >
+        android:background="@color/button_bg">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -23,29 +22,34 @@
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/tab_viewpager"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp" />
+                    android:layout_height="180dp"
+                    android:layout_marginTop="8dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layoutAnimation="@anim/layout_animation"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerService"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:itemCount="1"
-                    android:layoutAnimation="@anim/layout_animation"
-                    tools:listitem="@layout/dashboard_service_layout"
                     android:layout_marginTop="8dp"
-                    android:background="@color/white" />
+                    android:background="@color/white"
+                    android:layoutAnimation="@anim/layout_animation"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/dashboard_service_layout" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerDoctor"
                     android:layout_width="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@color/white" />
 
                 <LinearLayout
@@ -55,11 +59,11 @@
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/reviewViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp" />
+                        android:layout_marginEnd="16dp" />
 
 
                 </LinearLayout>

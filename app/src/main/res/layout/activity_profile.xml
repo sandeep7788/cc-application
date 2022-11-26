@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/signin_round_shape"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/theme_color"
         android:orientation="vertical">
 
         <include
@@ -29,9 +29,13 @@
             android:id="@+id/nestedScrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scrollbarSize="0dp"
             android:layout_marginTop="?actionBarSize"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/signin_round_shape"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -61,8 +65,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_profile"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
                         android:background="@drawable/circul_white"
                         android:elevation="2dp"
                         android:src="@drawable/add_profile"
@@ -72,8 +76,8 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
                         android:background="@drawable/circul_white"
                         android:backgroundTint="#AED6F1"
                         android:elevation="1dp"
@@ -145,6 +149,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:editable="false"
                         android:layout_marginLeft="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="36dp"
@@ -162,97 +169,11 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|left"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="14dp"
-                    android:background="@color/white"
-                    android:fontFamily="@font/intel"
-                    android:foregroundGravity="center"
-                    android:text="Password"
-                    android:textColor="@color/nev_item_color"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_txtbg"
-                    android:orientation="horizontal"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp">
-
-                    <EditText
-                        android:id="@+id/edt_Password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="36dp"
-                        android:backgroundTint="@color/button_bg"
-                        android:fontFamily="@font/intel"
-                        android:hint="Enter password"
-                        android:inputType="textPassword"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/txt_hint"
-                        android:textSize="@dimen/text_nev"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|left"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="14dp"
-                    android:background="@color/white"
-                    android:fontFamily="@font/intel"
-                    android:foregroundGravity="center"
-                    android:text="Conform Password"
-                    android:textColor="@color/nev_item_color"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_txtbg"
-                    android:orientation="horizontal"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp">
 
-                    <EditText
-                        android:id="@+id/edt_confirmPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="36dp"
-                        android:backgroundTint="@color/button_bg"
-                        android:fontFamily="@font/intel"
-                        android:hint="Conform Your password"
-                        android:inputType="textPassword"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/txt_hint"
-                        android:textSize="@dimen/text_nev"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -352,7 +273,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="14dp"
                     android:fontFamily="@font/intel"
                     android:foregroundGravity="center"
                     android:text="Phone No."
@@ -364,7 +285,7 @@
                     android:id="@+id/layout_number"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="6dp"
                     android:clickable="true"
                     android:orientation="horizontal"
                     android:paddingTop="2dp"
@@ -737,36 +658,9 @@
                     android:layout_marginBottom="45dp"
                     android:background="@drawable/round_corner_shape"
                     android:backgroundTint="@color/theme_color"
-                    android:text="Create"
+                    android:text="Update"
                     android:textColor="@color/button_bg" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/intel"
-                    android:gravity="center"
-                    android:paddingTop="2dp"
-                    android:singleLine="true"
-                    android:text="Already a member?"
-                    android:textColor="@color/gray_btn_bg_color"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/txtSignIn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="@dimen/txt_15sp"
-                    android:fontFamily="@font/intel"
-                    android:gravity="center"
-                    android:paddingTop="2dp"
-                    android:singleLine="true"
-                    android:text="Sign In"
-                    android:textColor="@color/theme_color"
-                    android:textSize="16dp" />
 
             </LinearLayout>
         </ScrollView>

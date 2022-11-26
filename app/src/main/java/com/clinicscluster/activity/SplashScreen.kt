@@ -1,10 +1,11 @@
-package com.clinicscluster
+package com.clinicscluster.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import androidx.databinding.DataBindingUtil
+import com.clinicscluster.R
 import com.clinicscluster.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
@@ -18,7 +19,7 @@ class SplashScreen : AppCompatActivity() {
 
 //        startActivity(Intent(this, SignUpActivity::class.java))
         Handler().postDelayed(Runnable {
-            val mainIntent = Intent(this@SplashScreen,DashboardActivity::class.java)
+            val mainIntent = Intent(this@SplashScreen, DashboardActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             this@SplashScreen.startActivity(mainIntent)
             this@SplashScreen.finish()

@@ -17,6 +17,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_main_round"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/Theme.ClinicsCluster"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="stateHidden"
@@ -37,6 +38,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".fragmnt.AboutUsFragment"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.ProfileActivity"
             android:exported="false">
             <meta-data
@@ -51,28 +59,28 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".activity.RegistrationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SignInActivity"
+            android:name=".activity.SignInActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ResetPasswordActivity"
+            android:name=".activity.ResetPasswordActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".activity.ForgotPasswordActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -86,7 +94,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SplashScreen"
+            android:name=".activity.SplashScreen"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -99,7 +107,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashboardActivity"
+            android:name=".activity.DashboardActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

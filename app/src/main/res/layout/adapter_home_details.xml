@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="180dp"
+        android:elevation="1dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        android:layout_marginStart="4dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/phone"
+             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/txtKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+
+                android:layout_marginTop="@dimen/txt_10sp"
+                android:fontFamily="@font/intel"
+                android:foregroundGravity="center"
+                android:text="Email Address"
+                android:ellipsize="end"
+                android:textColor="@color/dark_green"
+                android:textSize="12dp"
+                 />
+
+            <TextView
+                android:id="@+id/txtValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:lines="2"
+                android:fontFamily="@font/intel"
+                android:foregroundGravity="center"
+                android:ellipsize="end"
+                android:text="Email AddressEmail AddressEmail AddressEmail AddressEmail AddressEmail AddressEmail AddressEmail AddressEmail Address"
+                android:textColor="#144544"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

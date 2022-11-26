@@ -60,7 +60,6 @@ class AppointmentForm : AppCompatActivity() {
 
 
         setServiceList()
-
         getClinicData()
         getServicesApi()
 
@@ -174,6 +173,10 @@ class AppointmentForm : AppCompatActivity() {
             }
         }
     }
+
+    var adapterDoctor : ArrayAdapter<String>?= null
+    var adapterTimeSlot : ArrayAdapter<String>?= null
+
     fun spinnerDoctor() {
         var item: ArrayList<String> = ArrayList()
         listDoctor.forEach {
@@ -182,7 +185,7 @@ class AppointmentForm : AppCompatActivity() {
 
         val spinner = binding.spinnerDoctor
         if (spinner != null) {
-            var adapterDoctor = ArrayAdapter(
+            adapterDoctor = ArrayAdapter(
                 this,
                 R.layout.simple_spinner_item, item
             )
@@ -211,11 +214,11 @@ class AppointmentForm : AppCompatActivity() {
 
         val spinner = binding.spinnerTimeSlot
         if (spinner != null) {
-            var adapterDoctor = ArrayAdapter(
+            adapterTimeSlot = ArrayAdapter(
                 this,
                 R.layout.simple_spinner_item, item
             )
-            spinner.adapter = adapterDoctor
+            spinner.adapter = adapterTimeSlot
 
             spinner.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
@@ -297,8 +300,19 @@ class AppointmentForm : AppCompatActivity() {
                                 val obj: ClinicModel = Gson().fromJson(JsonObjectData.toString(), ClinicModel::class.java)
                                 listClinic.add(obj)
                             }
-                            spinnerClinic()
-                            getServicesApi()
+
+
+                            if (listClinic.isNotEmpty()) {
+                                spinnerClinic()
+                                getServicesApi()
+                            } else {
+                                listDoctor.clear()
+                                listTimeslot?.clear()
+                                Utility.showSnackBar(mContext, "clinic not available.")
+                                binding.spinnerDoctor.adapter = null
+                                binding.spinnerTimeSlot.adapter = null
+                            }
+
                         } else {
                             Utility.showDialog(
                                 mContext,
@@ -350,8 +364,18 @@ class AppointmentForm : AppCompatActivity() {
                                 listDoctor.add(obj)
                             }
 
-                            spinnerDoctor()
-                            getTimeSlotApi()
+                            if (listDoctor.isNotEmpty()) {
+                                spinnerDoctor()
+                                getTimeSlotApi()
+                            } else {
+                                listDoctor.clear()
+                                listTimeslot?.clear()
+                                binding.spinnerDoctor.adapter = null
+                                binding.spinnerTimeSlot.adapter = null
+
+                                Utility.showSnackBar(mContext, "doctors not available in this clinic.")
+                            }
+
 
                         } else {
                             Utility.showDialog(
@@ -375,7 +399,6 @@ class AppointmentForm : AppCompatActivity() {
     var counter = 0
     fun getTimeSlotApi() {
 
-
         var apiInterface: ApiInterface =
             RetrofitManager().instance!!.create(ApiInterface::class.java)
 
@@ -394,6 +417,7 @@ class AppointmentForm : AppCompatActivity() {
         try {
             docId = listDoctor.get(binding.spinnerDoctor.selectedItemPosition).id
         } catch (e:Exception) {
+            Log.e(TAG, "getTimeSlotApi: "+e.message)
             getDoctorApi()
         }
         binding.progressBarTimeSlot.visibility = View.VISIBLE

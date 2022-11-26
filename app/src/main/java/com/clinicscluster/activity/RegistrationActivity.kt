@@ -1,4 +1,4 @@
-package com.clinicscluster
+package com.clinicscluster.activity
 
 import android.Manifest
 import android.app.Activity
@@ -25,8 +25,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.clinicscluster.R
 import com.clinicscluster.databinding.ActivityRegistrationBinding
 import com.clinicscluster.helper.*
+import com.clinicscluster.model.BloodGroupModel
 import com.clinicscluster.model.ClinicModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -56,6 +58,7 @@ class RegistrationActivity : AppCompatActivity() {
     var thisAMonth = date.get(Calendar.MONTH).toInt()
     var thisADay = date.get(Calendar.DAY_OF_MONTH).toInt()
     var listClinic: ArrayList<ClinicModel> = ArrayList()
+    var listBloodGroup: ArrayList<BloodGroupModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,10 +73,94 @@ class RegistrationActivity : AppCompatActivity() {
 
         onClick()
 
-        spinnerBloodGroup()
+        getBloodGroupData()
         spinnerGender()
         getClinicData()
     }
+
+    fun spinnerBloodGroup() {
+        var item: ArrayList<String> = ArrayList()
+        listBloodGroup.forEach {
+            item.add(it.title)
+        }
+
+        val spinner = binding.edtBloodGroup
+        if (spinner != null) {
+            val adapter = ArrayAdapter(
+                this,
+                R.layout.simple_spinner_item, item
+            )
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View?, position: Int, id: Long,
+                ) {
+
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+        }
+    }
+
+
+    fun getBloodGroupData() {
+        progressDialog!!.show()
+        listBloodGroup.clear()
+        var apiInterface: ApiInterface =
+            RetrofitManager().instance!!.create(ApiInterface::class.java)
+
+        apiInterface.getbloodgroups.enqueue(object : Callback<JsonObject> {
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                Toast.makeText(mContext, " " + t.message.toString(), Toast.LENGTH_LONG)
+                    .show()
+                progressDialog!!.dismiss()
+            }
+
+            override fun onResponse(
+                call: Call<JsonObject>,
+                response: Response<JsonObject>
+            ) {
+                progressDialog!!.dismiss()
+                try {
+                    if (response.isSuccessful) {
+
+                        Log.d(TAG, "onResponse: " + response.body().toString())
+                        val json: JSONObject = JSONObject(response.body().toString())
+                        var jsonList = json.getJSONArray("bloodgroup")
+
+                        if (json.getBoolean("status") != null && json.getBoolean("status")) {
+                            for (i in 0 until jsonList.length()) {
+                                val JsonObjectData = jsonList.getJSONObject(i)
+                                val obj: BloodGroupModel = Gson().fromJson(JsonObjectData.toString(), BloodGroupModel::class.java)
+                                listBloodGroup.add(obj)
+                            }
+                            spinnerBloodGroup()
+                        } else {
+                            Utility.showDialog(
+                                mContext,
+                                SweetAlertDialog.ERROR_TYPE, json.getString("message")
+                            )
+
+                        }
+                    } else {
+                        Toast.makeText(mContext, "Something went wrong! ", Toast.LENGTH_LONG).show()
+                    }
+                } catch (e: Exception) {
+                    Toast.makeText(mContext, "Something went wrong! ", Toast.LENGTH_LONG).show()
+                    progressDialog!!.dismiss()
+                }
+
+            }
+
+        })
+    }
+
     fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
     fun setDate(txtView: TextView) {
         Utility.hideKeyboard(this)
@@ -125,6 +212,8 @@ class RegistrationActivity : AppCompatActivity() {
                 Utility.showSnackBar(mContext, ApiContants.errorMsg + "Date of Brith")
             }  else if (listClinic.isEmpty()) {
                 Utility.showSnackBar(mContext, "Please select clinic")
+            } else if (listBloodGroup.isEmpty()) {
+            Utility.showSnackBar(mContext, "Please select blood group")
             } else if (binding.edtCity.text.toString().isEmpty()) {
                 Utility.showSnackBar(mContext, ApiContants.errorMsg + "City")
             } else if (binding.edtCountry.text.toString().isEmpty()) {
@@ -140,6 +229,12 @@ class RegistrationActivity : AppCompatActivity() {
 
         binding.edtDob.setOnClickListener {
             setDate(binding.edtDob)
+        }
+
+        binding.txtSignIn.setOnClickListener {
+            val mIntent = Intent(this@RegistrationActivity, SignInActivity::class.java)
+            startActivity(mIntent)
+            finish()
         }
 
         binding.imgEdit.setOnClickListener {
@@ -248,33 +343,6 @@ class RegistrationActivity : AppCompatActivity() {
         return RequestBody.create(
             MultipartBody.FORM, value
         )
-    }
-
-    fun spinnerBloodGroup() {
-        val item = resources.getStringArray(R.array.blood_group)
-
-        val spinner = binding.edtBloodGroup
-        if (spinner != null) {
-            val adapter = ArrayAdapter(
-                this,
-                R.layout.simple_spinner_item, item
-            )
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View?, position: Int, id: Long,
-                ) {
-
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
     }
 
     fun spinnerGender() {

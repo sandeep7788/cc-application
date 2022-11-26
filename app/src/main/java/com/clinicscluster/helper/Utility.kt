@@ -466,6 +466,10 @@ class Utility {
         fun setImage(context: Context, path: String, ivImage: ImageView) {
 //            Picasso.with(context).load(path).placeholder(R.drawable.add_icon).into(ivImage)
 
+            if (path == null)
+            {
+                return
+            }
             if(path.startsWith("http")) {
                 Glide.with(context)
                     .load(path)

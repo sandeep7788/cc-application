@@ -83,7 +83,7 @@ class AppointmentListActivity : AppCompatActivity() {
                             Log.d(TAG, "onResponse: " + response.body().toString())
 
 
-                            if (response.body()?.status != null && response.body()?.status == true) {
+                            if (response.body()?.status != null && response.body()?.status == true && response.body()?.appointments?.isNotEmpty() == true) {
                                 response.body()?.appointments?.let { listService.addAll(it) }
                                 adapterService?.notifyDataSetChanged()
 

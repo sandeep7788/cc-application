@@ -24,6 +24,18 @@ public class DashboardModel {
     @SerializedName("reviews")
     @Expose
     private List<Review> reviews = null;
+    @SerializedName("siteSettings")
+    @Expose
+    private List<AboutUsListHomeModel> siteSettings = null;
+
+    public List<AboutUsListHomeModel> getSiteSettings() {
+        return siteSettings;
+    }
+
+    public void setSiteSettings(List<AboutUsListHomeModel> siteSettings) {
+        this.siteSettings = siteSettings;
+    }
+
     @SerializedName("doctors")
     @Expose
     private List<Doctor> doctors = null;

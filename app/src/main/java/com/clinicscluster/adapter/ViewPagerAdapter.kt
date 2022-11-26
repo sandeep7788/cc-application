@@ -1,21 +1,28 @@
 package com.clinicscluster.adapter
 
 import android.content.Context
-import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.viewpager.widget.PagerAdapter
 import com.clinicscluster.R
 import com.clinicscluster.helper.Utility
+import com.clinicscluster.model.dashboard.Slider
 import java.util.*
-import java.util.logging.Handler
-import kotlin.collections.ArrayList
+import android.graphics.BitmapFactory
+
+import android.graphics.Bitmap
+import java.io.BufferedInputStream
+import java.io.IOException
+import java.io.InputStream
+
 
 class ViewPagerAdapter(// Context object
     var context: Context, // Array of images
-    var images: ArrayList<String>
+    var images: ArrayList<Slider>
 ) : PagerAdapter() {
     // Layout Inflater
     var mLayoutInflater: LayoutInflater
@@ -32,7 +39,7 @@ class ViewPagerAdapter(// Context object
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object` as LinearLayout
+        return view === `object`
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -41,12 +48,28 @@ class ViewPagerAdapter(// Context object
 
         // referencing the image view from the item.xml file
         val imageView = itemView.findViewById<View>(R.id.imageViewMain) as ImageView
+        val title = itemView.findViewById<View>(R.id.txtTitle) as TextView
+        val des = itemView.findViewById<View>(R.id.txtShortDes) as TextView
+        val txtLongDes = itemView.findViewById(R.id.txtLongDesTwo) as TextView
 
         // setting the image in the imageView
 //        imageView.setImageResource(images[position])
         if (images[position] != null) {
-            Utility.setImage(context, images[position].toString(), imageView)
+            Utility.setImage(context, images[position].image.toString(), imageView)
+
+//            try {
+//                val inputStream: InputStream = context.assets.open(images[position].image.toString())
+//                val bufferedInputStream = BufferedInputStream(inputStream)
+//                val bmp = BitmapFactory.decodeStream(bufferedInputStream)
+//                imageView.setImageBitmap(bmp)
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//            }
         }
+
+        title.text = images[position].title.toString()
+        des.text = images[position].heading.toString()
+        txtLongDes.text = images[position].subheading.toString()
         // Adding the View
         Objects.requireNonNull(container).addView(itemView)
 
@@ -57,6 +80,6 @@ class ViewPagerAdapter(// Context object
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView(`object` as LinearLayout)
+        container.removeView(`object` as ConstraintLayout)
     }
 }

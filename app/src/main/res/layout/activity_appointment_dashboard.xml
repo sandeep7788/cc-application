@@ -11,24 +11,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/signin_round_shape"
-        android:backgroundTint="@color/white"
+        android:background="@color/button_bg"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/layout_toolbar_with_back_btn"
-            app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="?actionBarSize"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,13 +39,12 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:background="@drawable/round_5p_border_corner_shape"
                     android:elevation="8dp"
-                    android:textSize="@dimen/txt_20sp"
-                    android:background="@drawable/round_5p_corner_shape"
-                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/intel"
                     android:text="Book Appointment"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/intel"/>
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/txt_20sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnMyApt"
@@ -64,13 +54,12 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:background="@drawable/round_5p_border_corner_shape"
                     android:elevation="8dp"
-                    android:textSize="@dimen/txt_20sp"
-                    android:background="@drawable/round_5p_corner_shape"
-                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/intel"
                     android:text="My Appointments"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/intel"/>
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/txt_20sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnEditProfile"
@@ -80,13 +69,12 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:background="@drawable/round_5p_border_corner_shape"
                     android:elevation="8dp"
-                    android:textSize="@dimen/txt_20sp"
-                    android:background="@drawable/round_5p_corner_shape"
-                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/intel"
                     android:text="Edit Profile"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/intel"/>
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/txt_20sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnLogout"
@@ -96,13 +84,12 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:background="@drawable/round_5p_border_corner_shape"
                     android:elevation="8dp"
-                    android:textSize="@dimen/txt_20sp"
-                    android:background="@drawable/round_5p_corner_shape"
-                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/intel"
                     android:text="Logout"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/intel"/>
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/txt_20sp" />
 
 
             </LinearLayout>

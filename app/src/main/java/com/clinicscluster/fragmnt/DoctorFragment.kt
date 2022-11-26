@@ -1,4 +1,4 @@
-package com.clinicscluster.dashboard
+package com.clinicscluster.fragmnt
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,42 +11,39 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.clinicscluster.R
-import com.clinicscluster.adapter.ReviewAdapter
-import com.clinicscluster.adapter.ServiceListFragmentAdapter
-import com.clinicscluster.adapter.ViewPagerAdapter
-import com.clinicscluster.databinding.FragmentServiceBinding
+import com.clinicscluster.adapter.DoctorDashBoardListAdapter
+import com.clinicscluster.databinding.FragmentDoctorBinding
 import com.clinicscluster.helper.ApiInterface
 import com.clinicscluster.helper.RetrofitManager
 import com.clinicscluster.helper.Utility
+import com.clinicscluster.model.DoctorModel
+import com.clinicscluster.model.dashboard.Doctor
 import com.clinicscluster.model.dashboard.ServiceListModel
+import com.google.gson.Gson
 import com.google.gson.JsonObject
-import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class ServiceFragment : Fragment() {
+class DoctorFragment : Fragment() {
 
-    var listBanner: ArrayList<String> = ArrayList()
-    lateinit var binding: FragmentServiceBinding
+    lateinit var binding: FragmentDoctorBinding
     lateinit var thiscontext: Context
-    var mViewPagerAdapter: ViewPagerAdapter? = null
-    var mReviewAdapter: ReviewAdapter? = null
-    var TAG = "@@ServiceFragment"
+    var TAG = "@@DoctorFragment"
     var progressDialog: SweetAlertDialog? = null
-    var listService: ArrayList<ServiceListModel> = ArrayList()
-    var adapterService: ServiceListFragmentAdapter? = null
+    var adapterDoctor: DoctorDashBoardListAdapter? = null
+    var listDoctor: java.util.ArrayList<Doctor> = java.util.ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View? {
-//        var view=inflater.inflate(com.foamkart.R.layout.fragment_home, container, false)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_service, container, false)
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_doctor, container, false)
         thiscontext = container!!.context
 
         progressDialog = SweetAlertDialog(thiscontext, SweetAlertDialog.PROGRESS_TYPE)
@@ -67,18 +64,18 @@ class ServiceFragment : Fragment() {
 
     fun init() {
 
-        setServiceList()
+        setDoctorList()
         getData()
 
     }
 
-    fun setServiceList() {
-        var linearLayoutManager: LinearLayoutManager? =
-            LinearLayoutManager(thiscontext, LinearLayoutManager.VERTICAL, false)
-        binding.recyclerService.layoutManager = linearLayoutManager
-        binding.recyclerService.itemAnimator = DefaultItemAnimator()
-        adapterService = ServiceListFragmentAdapter(listService, thiscontext)
-        binding.recyclerService.adapter = adapterService
+    fun setDoctorList() {
+
+        val linearLayoutManager = GridLayoutManager(thiscontext, 2)
+        binding.recyclerDoctor.layoutManager = linearLayoutManager
+        binding.recyclerDoctor.itemAnimator = DefaultItemAnimator()
+        adapterDoctor = DoctorDashBoardListAdapter(listDoctor, thiscontext)
+        binding.recyclerDoctor.adapter = adapterDoctor
     }
 
     fun getData() {
@@ -86,7 +83,7 @@ class ServiceFragment : Fragment() {
         var apiInterface: ApiInterface =
             RetrofitManager().instance!!.create(ApiInterface::class.java)
 
-        apiInterface.frontService.enqueue(object : Callback<JsonObject> {
+        apiInterface.doctors.enqueue(object : Callback<JsonObject> {
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                 Toast.makeText(thiscontext, " " + t.message.toString(), Toast.LENGTH_LONG)
                     .show()
@@ -103,26 +100,16 @@ class ServiceFragment : Fragment() {
 
                         Log.d(TAG, "onResponse: " + response.body().toString())
                         val json: JSONObject = JSONObject(response.body().toString())
-                        var jsonList = json.getJSONArray("services")
+                        var jsonList = json.getJSONArray("doctors")
 
                         if (json.getBoolean("status") != null && json.getBoolean("status")) {
                             for (i in 0 until jsonList.length()) {
                                 val JsonObjectData = jsonList.getJSONObject(i)
-                                val data = ServiceListModel()
-                                data.title = (JsonObjectData.getString("title"))
-                                data.shortDescription =
-                                    (JsonObjectData.getString("short_description"))
-                                data.image = (JsonObjectData.getString("image"))
-                                data.description = (JsonObjectData.getString("description"))
-                                listService.add(data)
+                                val obj: Doctor = Gson().fromJson(JsonObjectData.toString(), Doctor::class.java)
+                                listDoctor.add(obj)
                             }
 
-
-                            if (listBanner.isEmpty()) {
-                                binding.tabViewpager.visibility = View.GONE
-                            }
-                            adapterService?.notifyDataSetChanged()
-                            mViewPagerAdapter?.notifyDataSetChanged()
+                            adapterDoctor?.notifyDataSetChanged()
 
                         } else {
                             Utility.showDialog(
@@ -132,10 +119,12 @@ class ServiceFragment : Fragment() {
 
                         }
                     } else {
-                        Toast.makeText(thiscontext, "Something went wrong! ", Toast.LENGTH_LONG).show()
+                        Toast.makeText(thiscontext, "Something went wrong! ", Toast.LENGTH_LONG)
+                            .show()
                     }
                 } catch (e: Exception) {
                     Toast.makeText(thiscontext, "Something went wrong! ", Toast.LENGTH_LONG).show()
+                    progressDialog!!.dismiss()
                 }
 
             }

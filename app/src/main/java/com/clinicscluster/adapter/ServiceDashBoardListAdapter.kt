@@ -40,7 +40,9 @@ class ServiceDashBoardListAdapter(private var mOptionList: List<Service>, var co
         holder.binding.txtName.setText(option.title)
 
         holder.binding.item.setOnClickListener {
-            context.startActivity(Intent(context, ServiceActivity::class.java))
+            var intent = Intent(context, ServiceActivity::class.java)
+            intent.putExtra("id", option.id)
+            context.startActivity(intent)
         }
     }
 

@@ -6,6 +6,6 @@
         android:right="0dp"
         android:bottom="0dp" />
     <corners android:radius="5dp"/>
-    <solid android:color="@color/white" />
-zz
+    <solid android:color="@color/white_color" />
+    <stroke android:width="2dp" android:color="@color/dark_green"/>
 </shape>

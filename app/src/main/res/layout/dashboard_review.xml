@@ -61,6 +61,7 @@
             android:fontFamily="@font/intel"
             android:gravity="center"
             android:maxLines="5"
+            android:ellipsize="end"
             android:paddingTop="2dp"
             android:text="I am satisfied about my experience at Keyhole clinic with pleasant behavior and succesful treatment by Dr. Padmakumar and entire team. I would recommend anyone to keyhole clinic."
             android:textColor="@color/gpvch_black"

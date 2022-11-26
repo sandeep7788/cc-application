@@ -1,4 +1,4 @@
-package com.clinicscluster.adapter
+package com.clinicscluster.activity
 
 import android.content.Context
 import android.content.Intent
@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.clinicscluster.activity.ServiceActivity
-import com.clinicscluster.databinding.DashboardDoctorLayoutBinding
-import com.clinicscluster.databinding.DashboardServiceLayoutBinding
 import com.clinicscluster.databinding.ServiceListAdapterBinding
 import com.clinicscluster.helper.Utility
-import com.clinicscluster.model.dashboard.Doctor
 import com.clinicscluster.model.dashboard.ServiceListModel
 
 class ServiceListFragmentAdapter(private var mOptionList: java.util.ArrayList<ServiceListModel>, var context: Context) :
@@ -38,7 +34,9 @@ class ServiceListFragmentAdapter(private var mOptionList: java.util.ArrayList<Se
         holder.binding.txtDes.text = option.shortDescription
 
         holder.binding.item.setOnClickListener {
-            context.startActivity(Intent(context, ServiceActivity::class.java))
+            var intent = Intent(context, ServiceActivity::class.java)
+            intent.putExtra("id", option.id)
+            context.startActivity(intent)
         }
     }
 
@@ -60,7 +58,6 @@ class ServiceListFragmentAdapter(private var mOptionList: java.util.ArrayList<Se
     inner class ViewHolder(val binding: ServiceListAdapterBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         override fun onClick(v: View?) {
-            context.startActivity(Intent(context, ServiceActivity::class.java))
         }
     }
 }
