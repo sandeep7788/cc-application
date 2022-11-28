@@ -32,6 +32,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
 import com.clinicscluster.R
 import com.google.android.material.snackbar.Snackbar
+import org.jsoup.Jsoup
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -586,6 +587,9 @@ class Utility {
             pDialog.show()
             pDialog.getButton(SweetAlertDialog.BUTTON_CONFIRM).setBackgroundColor(Color.parseColor("#0173B7"))
 
+        }
+        fun html2text(html: String?): String? {
+            return Jsoup.parse(html).text()
         }
     }
 

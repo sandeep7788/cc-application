@@ -29,8 +29,8 @@ class DoctorDashBoardListAdapter(private var mOptionList: List<Doctor>, var cont
         if (option.profileImage != null) {
             Utility.setImage(context, option.profileImage, holder.binding.image)
         }
-        holder.binding.txtDoctorName.text = option.firstName
-        holder.binding.txtType.text = option.specialties
+        holder.binding.txtDoctorName.text = Utility.html2text(option.firstName)
+        holder.binding.txtType.text = Utility.html2text(option.specialties)
 
     }
 

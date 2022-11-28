@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.clinicscluster.databinding.AppointmentAdapterBinding
 import com.clinicscluster.helper.ApplicationInit
+import com.clinicscluster.helper.Utility
 import com.clinicscluster.model.appointment.Appointment
 
 class AppointmentListAdapter(
@@ -33,20 +34,20 @@ class AppointmentListAdapter(
         try {
 
             holder.binding.txtTitle.text = ApplicationInit.readUser()?.name
-            holder.binding.txtDes.text = option.description
-            holder.binding.txtDate.text = option.appointmentDate
-            holder.binding.txtDate.text = option.appointmentDate
-            holder.binding.txtDoctor.text = option.doctor.firstName + " " + option.doctor.lastName
+            holder.binding.txtDes.text = Utility.html2text(option.description)
+            holder.binding.txtDate.text = Utility.html2text(option.appointmentDate)
+            holder.binding.txtDate.text = Utility.html2text(option.appointmentDate)
+            holder.binding.txtDoctor.text = Utility.html2text(option.doctor.firstName + " " + option.doctor.lastName)
 
             var serviceData = ""
             option.services.forEach {
                 serviceData = serviceData + it.name + ", "
             }
-
+// regigtare date.... char loimit.. api
             if (serviceData.isNotEmpty())
                 serviceData = removeLastChar(serviceData).toString()
 
-            holder.binding.txtService.text = serviceData
+            holder.binding.txtService.text = Utility.html2text(serviceData)
 
             if (option.status == 0) {
                 holder.binding.txtStatus.text = "Booked/Upcoming"

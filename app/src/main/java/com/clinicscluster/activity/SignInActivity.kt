@@ -2,6 +2,7 @@ package com.clinicscluster.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -60,6 +61,16 @@ class SignInActivity : AppCompatActivity() {
             val mIntent = Intent(this@SignInActivity, RegistrationActivity::class.java)
             startActivity(mIntent)
         }
+
+        binding.btnPrivacyPolicy.setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://officeintact.com/clinic/privacy-policy")
+                )
+            )
+        }
+
     }
     fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
     fun loginApi() {

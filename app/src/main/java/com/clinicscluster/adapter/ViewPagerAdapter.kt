@@ -67,9 +67,9 @@ class ViewPagerAdapter(// Context object
 //            }
         }
 
-        title.text = images[position].title.toString()
-        des.text = images[position].heading.toString()
-        txtLongDes.text = images[position].subheading.toString()
+        title.text = Utility.html2text(images[position].title.toString())
+        des.text = Utility.html2text(images[position].heading.toString())
+        txtLongDes.text = Utility.html2text(images[position].subheading.toString())
         // Adding the View
         Objects.requireNonNull(container).addView(itemView)
 

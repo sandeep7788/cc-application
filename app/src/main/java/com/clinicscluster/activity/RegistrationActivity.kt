@@ -78,6 +78,7 @@ class RegistrationActivity : AppCompatActivity() {
         getClinicData()
     }
 
+
     fun spinnerBloodGroup() {
         var item: ArrayList<String> = ArrayList()
         listBloodGroup.forEach {
@@ -180,6 +181,8 @@ class RegistrationActivity : AppCompatActivity() {
             thisAMonth,
             thisADay
         )
+
+        dpd.getDatePicker().maxDate = System.currentTimeMillis()
         dpd.datePicker.spinnersShown = true
         dpd.datePicker.calendarViewShown = false
         dpd.show()

@@ -151,6 +151,7 @@
                         android:layout_marginStart="16dp"
                         android:enabled="false"
                         android:focusable="false"
+                        android:maxLength="25"
                         android:editable="false"
                         android:layout_marginLeft="16dp"
                         android:layout_marginEnd="16dp"
@@ -235,6 +236,7 @@
                         android:layout_marginStart="2dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="4dp"
+                        android:maxLength="25"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/edit_txtbg"
@@ -256,6 +258,7 @@
                         android:layout_marginEnd="2dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
+                        android:maxLength="25"
                         android:background="@drawable/edit_txtbg"
                         android:foregroundGravity="center"
                         android:gravity="center|left"
@@ -550,6 +553,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/edit_txtbg"
                         android:foregroundGravity="center"
+                        android:maxLength="50"
                         android:gravity="center|left"
                         android:hint="City"
                         android:inputType="textPostalAddress"
@@ -574,6 +578,7 @@
                         android:inputType="textPostalAddress"
                         android:paddingStart="8dp"
                         android:textColor="@color/text_color"
+                        android:maxLength="50"
                         android:textSize="@dimen/text_nev" />
 
                 </LinearLayout>
@@ -637,6 +642,7 @@
                     android:gravity="start"
                     android:minLines="3"
                     android:padding="12dp"
+                    android:maxLength="250"
                     android:paddingStart="16dp"
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/txt_hint"

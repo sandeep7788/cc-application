@@ -55,9 +55,9 @@ class ReviewAdapter(// Context object
             Utility.setImage(context, list[position].image, imageProfile)
         }
 
-        txtName.setText(list.get(position).name)
-        txtPosition.setText(list.get(position).position)
-        txtReview.setText(list.get(position).description)
+        txtName.setText(Utility.html2text(list.get(position).name))
+        txtPosition.setText(Utility.html2text(list.get(position).position))
+        txtReview.setText(Utility.html2text(list.get(position).description))
         // Adding the View
         Objects.requireNonNull(container).addView(itemView)
 

@@ -1,4 +1,4 @@
-package com.clinicscluster.activity
+package com.clinicscluster.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.clinicscluster.activity.ServiceActivity
 import com.clinicscluster.databinding.ServiceListAdapterBinding
 import com.clinicscluster.helper.Utility
 import com.clinicscluster.model.dashboard.ServiceListModel
@@ -30,8 +31,8 @@ class ServiceListFragmentAdapter(private var mOptionList: java.util.ArrayList<Se
         if (option.image != null) {
             Utility.setImage(context, option.image, holder.binding.image)
         }
-        holder.binding.txtTitle.text = option.title
-        holder.binding.txtDes.text = option.shortDescription
+        holder.binding.txtTitle.text = Utility.html2text(option.title)
+        holder.binding.txtDes.text = Utility.html2text(option.shortDescription)
 
         holder.binding.item.setOnClickListener {
             var intent = Intent(context, ServiceActivity::class.java)

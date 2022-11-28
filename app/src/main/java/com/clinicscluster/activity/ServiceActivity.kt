@@ -1,29 +1,27 @@
 package com.clinicscluster.activity
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.clinicscluster.R
-import com.clinicscluster.adapter.AppointmentListAdapter
-import com.clinicscluster.databinding.ActivityAppointmentListBinding
 import com.clinicscluster.databinding.ActivityServiceBinding
 import com.clinicscluster.helper.ApiInterface
 import com.clinicscluster.helper.RetrofitManager
 import com.clinicscluster.helper.Utility
-import com.clinicscluster.model.DoctorModel
-import com.clinicscluster.model.appointment.Appointment
 import com.clinicscluster.model.dashboard.ServiceListModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import org.json.JSONObject
+import org.jsoup.Jsoup
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class ServiceActivity : AppCompatActivity() {
     lateinit var binding: ActivityServiceBinding
@@ -36,7 +34,7 @@ class ServiceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_service)
-        binding.toolbar.txtTitle.text = "Services"
+        binding.toolbar.txtTitle.text = "Service"
         mContext = this@ServiceActivity
         progressDialog = SweetAlertDialog(mContext, SweetAlertDialog.PROGRESS_TYPE)
         progressDialog!!.progressHelper.barColor = R.color.theme_color
@@ -88,9 +86,13 @@ class ServiceActivity : AppCompatActivity() {
 
                             Utility.setImage(mContext, obj.image, binding.image)
 
-                            binding.txtTitle.setText(obj.title)
-                            binding.txtShortDes.setText(obj.shortDescription)
-                            binding.txtLongDes.setText(obj.description)
+                            var title = Utility.html2text(obj.title)
+                            var sDes = Utility.html2text(obj.shortDescription)
+                            var des = Utility.html2text(obj.description)
+
+                            binding.txtTitle.setText(title)
+                            binding.txtShortDes.setText(sDes)
+                            binding.txtLongDes.setText(des)
 
                         } else {
                             Utility.showDialog(
@@ -111,5 +113,7 @@ class ServiceActivity : AppCompatActivity() {
 
         })
     }
-
+    fun html2text(html: String?): String? {
+        return Jsoup.parse(html).text()
+    }
 }

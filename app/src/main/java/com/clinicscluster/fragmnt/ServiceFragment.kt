@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.clinicscluster.R
 import com.clinicscluster.adapter.ReviewAdapter
-import com.clinicscluster.activity.ServiceListFragmentAdapter
+import com.clinicscluster.adapter.ServiceListFragmentAdapter
 import com.clinicscluster.adapter.ViewPagerAdapter
 import com.clinicscluster.databinding.FragmentServiceBinding
 import com.clinicscluster.helper.ApiInterface
@@ -108,11 +108,11 @@ class ServiceFragment : Fragment() {
                             for (i in 0 until jsonList.length()) {
                                 val JsonObjectData = jsonList.getJSONObject(i)
                                 val data = ServiceListModel()
-                                data.title = (JsonObjectData.getString("title"))
+                                data.title = Utility.html2text((JsonObjectData.getString("title")))
                                 data.shortDescription =
-                                    (JsonObjectData.getString("short_description"))
+                                    Utility.html2text((JsonObjectData.getString("short_description")))
                                 data.image = (JsonObjectData.getString("image"))
-                                data.description = (JsonObjectData.getString("description"))
+                                data.description = Utility.html2text((JsonObjectData.getString("description")))
                                 data.id = (JsonObjectData.getInt("id"))
                                 listService.add(data)
                             }

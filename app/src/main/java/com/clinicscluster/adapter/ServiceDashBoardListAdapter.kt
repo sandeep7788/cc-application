@@ -37,7 +37,7 @@ class ServiceDashBoardListAdapter(private var mOptionList: List<Service>, var co
             Utility.setImage(context,option.image,holder.binding.image)
         }
 
-        holder.binding.txtName.setText(option.title)
+        holder.binding.txtName.setText(Utility.html2text(option.title))
 
         holder.binding.item.setOnClickListener {
             var intent = Intent(context, ServiceActivity::class.java)

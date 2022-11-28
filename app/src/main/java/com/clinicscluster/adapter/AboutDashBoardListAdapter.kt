@@ -36,18 +36,17 @@ class AboutDashBoardListAdapter(private var mOptionList: List<AboutUsListHomeMod
 
         if (option._key.equals("site_contact_number" ,true)) {
             holder.binding.txtKey.text = "Call Now For Free"
-            holder.binding.txtValue.text = option._value
+            holder.binding.txtValue.text = Utility.html2text(option._value)
             holder.binding.image.setImageResource(R.drawable.phone)
         }
         if (option._key.equals("site_address" ,true)) {
             holder.binding.txtKey.text = "Address Here"
-            holder.binding.txtValue.text = option._value
+            holder.binding.txtValue.text = Utility.html2text(option._value)
             holder.binding.image.setImageResource(R.drawable.location)
         }
         if (option._key.equals("site_clock" ,true)) {
             holder.binding.txtKey.text = "Opening Hours"
-            holder.binding.txtValue.text = "Mon-Sat: 8:00 am \n" +
-                    "8:00 pm"
+            holder.binding.txtValue.text = ""
             holder.binding.image.setImageResource(R.drawable.clock)
         }
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.clinicscluster.databinding.AdapterCheckboxBinding
 import com.clinicscluster.databinding.AppointmentAdapterBinding
 import com.clinicscluster.helper.ApplicationInit
+import com.clinicscluster.helper.Utility
 import com.clinicscluster.model.ServiceModel
 import com.clinicscluster.model.appointment.Appointment
 
@@ -34,7 +35,8 @@ class AptCheckBoxAdapter(
 
         try {
 
-            holder.binding.checkbox.setText(option.name)
+            holder.binding.checkbox.setText(
+                Utility.html2text(option.name))
 
             holder.binding.checkbox.setOnCheckedChangeListener { compoundButton, b ->
                 option.isChecked = b

@@ -77,9 +77,10 @@ class AboutUsFragment : Fragment() {
                                 Gson().fromJson(JsonObjectData.toString(), AboutModel::class.java)
 
                             Utility.setImage(mContext, obj.image, binding.image)
-                            binding.txtTitle.text = obj.name
-                            binding.txtShortDes.text = obj.metaDescription
-                            binding.txtLongDes.text = obj.content
+
+                            binding.txtTitle.text = Utility.html2text(obj.name)
+                            binding.txtShortDes.text = Utility.html2text(obj.metaDescription)
+                            binding.txtLongDes.text = Utility.html2text(obj.content)
 
                         } else {
                             Utility.showDialog(

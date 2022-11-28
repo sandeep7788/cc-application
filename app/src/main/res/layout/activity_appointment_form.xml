@@ -260,6 +260,7 @@
                     android:clickable="true"
                     android:fontFamily="@font/intel"
                     android:hint="Make Note"
+                    android:maxLength="250"
                     android:gravity="start"
                     android:minLines="3"
                     android:padding="12dp"

@@ -147,7 +147,7 @@ class AppointmentForm : AppCompatActivity() {
     fun spinnerClinic() {
         var item: ArrayList<String> = ArrayList()
         listClinic.forEach {
-            item.add(it.name)
+            item.add(Utility.html2text(it.name).toString())
         }
 
         val spinner = binding.spinnerClinic
@@ -180,7 +180,7 @@ class AppointmentForm : AppCompatActivity() {
     fun spinnerDoctor() {
         var item: ArrayList<String> = ArrayList()
         listDoctor.forEach {
-            item.add(it.firstName +" "+ it.lastName)
+            item.add(Utility.html2text(it.firstName +" "+ it.lastName).toString())
         }
 
         val spinner = binding.spinnerDoctor
@@ -209,7 +209,7 @@ class AppointmentForm : AppCompatActivity() {
     fun spinnerTimeSlot() {
         var item: ArrayList<String> = ArrayList()
         listTimeslot.forEach {
-            item.add(it.option)
+            item.add(Utility.html2text(it.option).toString())
         }
 
         val spinner = binding.spinnerTimeSlot
